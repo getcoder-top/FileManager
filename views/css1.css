@@ -3,6 +3,10 @@
 	padding: 0;
 }
 
+.main{
+	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+
 .newoptions{
 	margin: 0;
 	padding: 0;
