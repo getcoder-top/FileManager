@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css1.css">
+</head>
+<body>
+    <h1>File Manager</h1>
+
+    <div class="newoptions">
+      <form action="/addfolder">
+        <input type="text" name="newfolder" id="newfolder">
+      <input type="submit" class="createfolder" value="Create Folder">
+      </form>
+      <form method="post" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="newfile" id="newfile">
+      <input type="submit" class="uploadfile" value="Upload File">
+      </form>
+      <!-- <div class="newfolder">
+        <input type="text" name="newfolder" id="newfolder">
+        
+      </div> -->
+    </div>
+    <div class="newpages">
+      <% data.forEach(files =>{ %>
+      <div class="itemcard">
+        <img src="file-1453.svg" class="imgfile" alt="fileimage">
+        <h1><%= files %></h1>
+        <form action="">
+        <input type="button" onclick="editfile()" value="Edit">
+        </form>
+        <form action="/delete">
+        <input type="hidden" id="delete" name="delete" value="<%= files%>">
+        <input type="submit" value="Delete">
+        </form>
+      </div>
+      <div class="editfile" id="editfile">
+        <form action="/editfile">
+        <input type="hidden" id="filename" name="filename" value="<%= files %>">
+        <input type="text" name="newfile" id="newfile" placeholder="enter new name">
+        <input type="submit" value="Edit">
+        </form>
+      </div>
+      <% }) %>
+
+      <% if(data1){ %>
+      <% data1.forEach(file =>{ %>
+      <h1><%= file.newdata %></h1>
+      <% }) %>
+      <% } %>
+    </div>
+    <script>
+      function editfile(){
+        document.getElementById("editfile").style.display = "block";
+      }
+    </script>
+</body>
+</html>
