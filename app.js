@@ -69,7 +69,8 @@ app.get("/signup", (req,res) =>{
             console.log(err);
         }
         else{
-            res.render("filemanager", {data : newdata});
+            res.render("index", {data : [{message : "User Registered Login"}]})
+            // res.render("filemanager", {data : newdata});
             console.log("user registered");
         }
     })
@@ -86,7 +87,12 @@ app.get("/login", (request, response) =>{
     // var newuser = '';
     database.query('SELECT * FROM newtable as t WHERE t.email LIKE ' + "'"+username+"'" + ' && t.password LIKE ' + "'"+password+"'", (err,data) =>{
         if(data!=''){
-            response.render("filemanager", {data: data, data1 : ""});
+            var newfiles = fs.readdirSync("files");
+            var data10 = [{newdata : "Folder Exists"}];
+            if(newfiles.length == 0){
+                data10 = [{newdata : "No File"}];
+            }
+            response.render("filemanager", {data: newfiles, data1 : data10});
         }
         else{
             var message = [{message : "User not registered"}];
